@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5951976382464904490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5951976382464904491}
+  - component: {fileID: 5951976382464904488}
+  m_Layer: 0
+  m_Name: A_
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5951976382464904491
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5951976382464904490}
+  m_LocalRotation: {x: -0.47476298, y: -0.024039831, z: -0.047391944, w: 0.878508}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: -56.767, y: 0.289, z: -6.332}
+--- !u!114 &5951976382464904488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5951976382464904490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  data:
+    dataString: UEsDBBQAAAgIAMArIew3sx9OXQIAABgFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMFy4jAM/RXG5y2TEJa2e9ullO6hLVO600suxlaIB8fO2E6Bdvj3lR1D0vSUzNOT9PSk5JMIZWtgTpulEfxRcyC/RsS/kx+jLvgAB7rVai0+4Mx5E9yVnkQD54U6oRFPfZrVFTgj2G+1lZ6cINgoUWhTLfgW5to6i3BBpQUMGe18tkLoc0QOMeEYnx/4nFwnoxO+M1AOzHdeOhtfZ5F7lSbjNA30RjFJqxq4F95lZZe0pC2rcKZI8fqZllLYKIi4Yx0GXtclGPATc0FxvqDD00sQ29J5lf3c56Kw4KJGQ493wqBNbVHyR7feVdTuWl3vVDa+zeTnLEhqiz5+i1+1kxVGVw/nvjgGQq4UbPdCj4xa1zO3D999Fd6oPZU7upHwVoJ60kujG8Ux6EzjUxsLk7teqcts8xLYruO1WgdgU3eGp4N1ouunMP1hLkW18ch42gJrqYPdt54LBhfzFwWH87CxAqJexD8Lr3Tbv6MYuBfGOgzFxsqr2+jGeCpZBM/8MI2ba6MgwFFzDYpKd1xhGTdc4SDWazuI3FP/xcTmMXb+EAYpAe74STIIrfT+sixb6v0j2PK5cVIo6ET7wBP6NNdKtRfW9+Sctm5MQVkvbdsI/vW0CGwYKyZpwrNkWswydkWz5IbeTK4zyG55Op2RcHtC4ZxUrlqh0R7cmuqKK7yz849ktDS0DtfODd0vxUele5YLVeg1MwDqua1wEQ4Gm+BHyRdcoEFrcE6osG/ymROp2Q54fimUh0kXB2do3lXJSS3etfNITubh55ETD19OeWXgXcDeNz8XO5HTf1BLAwQUAAAICADAKyHsjAPu0m0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0UmpScnKakaFBirGBSZqZcbJuorGBRaKFkblxqrFliqGJmVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICADAKyHsN7MfTl0CAAAYBQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICADAKyHsjAPu0m0AAAB4AAAACQAkAAAAAAAAAAAAAACqAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAGIDAAAAAA==
+    upgradeData: 
+    file_cachedStartup: {fileID: 0}
+    data_cachedStartup: 
+    cacheStartup: 0
+  showNavGraphs: 1
+  showUnwalkableNodes: 1
+  debugMode: 0
+  debugFloor: 0
+  debugRoof: 1
+  manualDebugFloorRoof: 0
+  showSearchTree: 0
+  unwalkableNodeDebugSize: 0.3
+  logPathResults: 1
+  maxNearestNodeDistance: 100
+  scanOnStartup: 1
+  fullGetNearestSearch: 0
+  prioritizeGraphs: 0
+  prioritizeGraphsLimit: 1
+  colorSettings:
+    _SolidColor: {r: 0.11764706, g: 0.4, b: 0.7882353, a: 0.9}
+    _UnwalkableNode: {r: 1, g: 0, b: 0, a: 0.5}
+    _BoundsHandles: {r: 0.29, g: 0.454, b: 0.741, a: 0.9}
+    _ConnectionLowLerp: {r: 0, g: 1, b: 0, a: 0.5}
+    _ConnectionHighLerp: {r: 1, g: 0, b: 0, a: 0.5}
+    _MeshEdgeColor: {r: 0, g: 0, b: 0, a: 0.5}
+    _AreaColors:
+    - {r: 0, g: 0, b: 0, a: 0}
+  tagNames:
+  - Basic Ground
+  - 1
+  - 2
+  - 3
+  - 4
+  - 5
+  - 6
+  - 7
+  - 8
+  - 9
+  - 10
+  - 11
+  - 12
+  - 13
+  - 14
+  - 15
+  - 16
+  - 17
+  - 18
+  - 19
+  - 20
+  - 21
+  - 22
+  - 23
+  - 24
+  - 25
+  - 26
+  - 27
+  - 28
+  - 29
+  - 30
+  - 31
+  heuristic: 2
+  heuristicScale: 1
+  threadCount: 1
+  maxFrameTime: 10
+  batchGraphUpdates: 0
+  graphUpdateBatchingInterval: 0.2
+  euclideanEmbedding:
+    mode: 0
+    seed: 0
+    pivotPointRoot: {fileID: 0}
+    spreadOutCount: 1
+  showGraphs: 1
