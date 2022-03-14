@@ -11,13 +11,10 @@ public abstract class NeuronState
     {
         brain=_brain;
     }
-    public abstract void ONEXIT();
-    public abstract void ONENTER();
-    public abstract void ACT();
-    public abstract void CHECK();
+    public abstract void ONEXIT();public abstract void ONENTER();
+    public abstract void ACT();public abstract void CHECK();
     public void TRANSITION(int i)
     {
-
         brain.currentstate.ONEXIT();
         brain.currentstate=i<0?brain.getBaseState(i):relatedstates[i];
         brain.currentstate.ONENTER();
@@ -76,8 +73,7 @@ public class P_JumpNeuron:NeuronState
         Debug.Log("Jump");
     }
     public override void CHECK()
-    {
-       
+    {  
     }
 
     public override void ONENTER()
@@ -94,10 +90,8 @@ public class P_AttackNeuron:NeuronState
    public override void INIT(Brain _brain)
     {
         base.INIT(_brain);
-
         relatedstates=new NeuronState[2];
 
-        
     }
        public override void ACT()
     {
@@ -107,7 +101,6 @@ public class P_AttackNeuron:NeuronState
     }
     public override void CHECK()
     {
-
     }
 
     public override void ONENTER()
