@@ -4,27 +4,25 @@ using UnityEngine;
 
 public class Player : Actor
 {
-        public Transform arm;
-        public Transform launchpoint;
-        public GameObject Fireprefab;
-        public Skill[] skill=new Skill[2];
+    public GameObject Fireprefab;
+    public Transform arm,launchpoint;
+    public Skill[] skill=new Skill[2];
 
     public override void Start()
     {
-        skill[0]=new ElementalDash(this,Fireprefab,arm,true,0,"UseSkill","Dash");
-        skill[1]=new FireHand(this,Fireprefab,arm,true,1,"UseSkill","Launch"); 
+        skill[0]=new ElementalDash
+                    (this,Fireprefab,arm,true,0,
+                    "ActivateSkill","Dash");
+        skill[1]=new FireHand
+                    (this,Fireprefab,arm,true,1,
+                    "ActivateSkill","Launch"); 
         base.Start();
     }    
     public override void Move(Vector3 axis)
     {
-        if(axis.z>0)
-        {
-            transform.localRotation=Quaternion.Euler(transform.localRotation.x,0,transform.localRotation.z);
-        }
-        else if(axis.z<0)
-        {
-            transform.localRotation=Quaternion.Euler(transform.localRotation.x,-180,transform.localRotation.z);
-        }
+        float rotation=axis.z>0?0:-180;
+
+        transform.localRotation=Quaternion.Euler(transform.localRotation.x,rotation,transform.localRotation.z);
         transform.position+=new Vector3(axis.y,axis.y,axis.z)*MovementSpeed*Time.deltaTime;
     }
     public override void Attack()
@@ -34,15 +32,13 @@ public class Player : Actor
         // skill[0].Init(this);
         // animator.Play("Dash");
     }
-    public void UseSkill(int index)
+    public override void Dodge()
+    {    
+        animator.Play("dodge");
+    }
+    public void ActivateSkill(int index)
     {
         skill[index].Use();
-    }
-    public override void Dodge()
-    {
-        Debug.Log("Yo");
-    
-        animator.Play("dodge");
     }
     public void SetCollider(int status)
     {
@@ -50,21 +46,6 @@ public class Player : Actor
         {
             collider.enabled=status==1;
         }
-    }
-    // public void LaunchAttack()
-    // {
-    //     var fire=Instantiate(Fireprefab,launchpoint.position,launchpoint.rotation);
-    // }
-    public void BoxCast()
-    {
-        // RaycastHit hit;
-        // Physics.Raycast(arm.position,transform.forward,out hit,5f);
-        // if(hit.collider)
-        // if(hit.collider.gameObject.GetComponent<CringeBall>())
-        // {
-        //     Debug.Log("fuk u");
-        //   hit.collider.GetComponent<Rigidbody>().AddForce(transform.forward*10,ForceMode.Impulse);
-        // }
     }
     void OnDrawGizmosSelected()
     {

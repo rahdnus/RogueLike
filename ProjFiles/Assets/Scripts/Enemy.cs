@@ -5,23 +5,30 @@ using UnityEngine;
 public class Enemy : Actor
 {
     [SerializeField] GameObject A_pointerSFX;
+    public GameObject Fireprefab;
+    public Transform arm,launchpoint;
+    public Skill[] skill=new Skill[2];
 
     public override void Start()
     {
-        // base.Start();
+        base.Start();
 
-       var sfx= Instantiate(A_pointerSFX,transform.position,Quaternion.identity);
-        Destroy(sfx,3f);
-    }
-    public override void Update()
-    {
+       var vfx= Instantiate(A_pointerSFX,transform.position,Quaternion.identity);
+        Destroy(vfx,3f);
 
+       skill[0]=new FireHand
+                    (this,Fireprefab,arm,true,0,
+                    "ActivateSkill","Attack"); 
     }
     public override void Attack()
     {
-        throw new System.NotImplementedException();
+        skill[0].Init(this);
+        animator.Play("Attack",0);
     }
-
+    public void ActivateSkill(int i)
+    {
+        skill[0].Use();
+    }
     public override void Dodge()
     {
         throw new System.NotImplementedException();

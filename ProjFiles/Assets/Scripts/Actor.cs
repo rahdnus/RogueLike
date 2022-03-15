@@ -12,7 +12,6 @@ public abstract class Actor : MonoBehaviour
     public virtual void Start()
     {
         animator=GetComponent<Animator>();
-        // GetComponent<Rigidbody>().AddForce(Vector3.forward*-1500,ForceMode.Force);
         brain.Init(this);
     }
 

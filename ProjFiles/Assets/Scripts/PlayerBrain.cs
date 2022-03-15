@@ -11,8 +11,8 @@ public class PlayerBrain : Brain
 
         basestate=new NeuronState[1];
         basestate[0]=new P_BaseNeuron();
-        currentstate=basestate[0];
 
+        currentstate=basestate[0];
         currentstate.INIT(this);
        
     }

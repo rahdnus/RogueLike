@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class AttackCollider : MonoBehaviour
 {
+    [SerializeField] LayerMask mask;
     [SerializeField]Status status;
-    void OnCollisionEnter(Collision other)
-   {
-       if(!other.gameObject.GetComponentInParent<Player>())
-       if(other.gameObject.GetComponent<CringeBall>())
-       {
-           Debug.Log("wtf");
-           other.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward*50,ForceMode.Impulse);
-       }
-   }
+//     void OnCollisionEnter(Collision other)
+//    {
+//        Debug.Log(other.gameObject.layer);
+//        if(!other.gameObject.GetComponentInParent<Player>())
+//        if(other.gameObject.GetComponent<CringeBall>())
+//        {
+//            Debug.Log("wtf");
+//            other.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward*50,ForceMode.Impulse);
+//        }
+//    }
     void OnTriggerEnter(Collider other)
    {
-       if(!other.gameObject.GetComponentInParent<Player>())
-       if(other.gameObject.GetComponent<Actor>())
+
+       int otherlayer=1<<other.gameObject.layer;
+        if((otherlayer & mask.value)>0)
        {
-           Debug.Log("wtf");
+           Debug.Log(other.gameObject.name+" "+this.gameObject.name);
            StatusEffect effect=null;
 
            if(status==Status.Burn)
