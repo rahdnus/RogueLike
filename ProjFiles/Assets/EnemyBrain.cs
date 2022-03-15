@@ -51,7 +51,9 @@ public class EN_BaseNeuron:NeuronState
         counter+=Time.deltaTime;
         if(counter>time)
         {
+            counter=0;
             TRANSITION(1);
+            
         }
 
     }

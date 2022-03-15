@@ -27,8 +27,8 @@ public class AttackCollider : MonoBehaviour
 
            if(status==Status.Burn)
            {
-                if(!other.gameObject.GetComponent<BurnStatus>())
-                    effect= other.gameObject.AddComponent<BurnStatus>();
+                if(!other.gameObject.GetComponentInParent<Actor>().gameObject.GetComponent<BurnStatus>())
+                    effect= other.gameObject.GetComponentInParent<Actor>().gameObject.AddComponent<BurnStatus>();
            }
          
             if(effect!=null)
