@@ -22,7 +22,7 @@ public class AttackCollider : MonoBehaviour
        int otherlayer=1<<other.gameObject.layer;
         if((otherlayer & mask.value)>0)
        {
-           Debug.Log(other.gameObject.name+" "+this.gameObject.name);
+           other.gameObject.GetComponentInParent<Actor>().brain.BeingAttacked();
            StatusEffect effect=null;
 
            if(status==Status.Burn)
@@ -33,6 +33,8 @@ public class AttackCollider : MonoBehaviour
          
             if(effect!=null)
             effect.Init(other.gameObject.GetComponent<Actor>(),0.5f,3f);
+
+           
 
         //    other.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward*50,ForceMode.Impulse);
        }

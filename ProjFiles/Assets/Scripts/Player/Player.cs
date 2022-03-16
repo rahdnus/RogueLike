@@ -50,4 +50,12 @@ public class Player : Actor
     void OnDrawGizmosSelected()
     {
     }
+
+    public override void TakeDamage()
+    {
+
+        animator.Play("Hurt",0);
+
+        Debug.Log(gameObject.name+" being attacked");
+    }
 }

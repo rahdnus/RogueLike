@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Actor : MonoBehaviour
 {
     [SerializeField] protected float MovementSpeed;
-    [SerializeField] protected Brain brain;
+    [SerializeField] public Brain brain;
     public Animator animator;
     [SerializeField]protected Collider[] colliders;
 
@@ -22,4 +22,6 @@ public abstract class Actor : MonoBehaviour
     public abstract void Move(Vector3 axis);
     public abstract void Attack();
     public abstract void Dodge();
+
+    public abstract void TakeDamage();
 }

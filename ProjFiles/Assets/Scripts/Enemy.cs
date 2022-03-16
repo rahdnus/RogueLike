@@ -38,4 +38,10 @@ public class Enemy : Actor
     {
         throw new System.NotImplementedException();
     }
+
+    public override void TakeDamage()
+    {
+        animator.Play("Hurt1",0);
+        Debug.Log(gameObject.name+" being attacked");
+    }
 }
