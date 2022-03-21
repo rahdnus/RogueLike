@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Player : Actor
 {
-
+    float prevrotation=0;
     public GameObject Fireprefab;
     public Transform arm,launchpoint;
     public Skill[] skill=new Skill[2];
@@ -21,8 +21,17 @@ public class Player : Actor
     }    
     public override void Move(Vector3 axis)
     {
-        float rotation=axis.z>0?0:-180;
-
+        float rotation=prevrotation;
+        if(axis.z>0)
+        {
+            rotation=0;
+            prevrotation=rotation;
+        }
+        else if(axis.z<0)
+        {
+            rotation=-180;
+            prevrotation=rotation;
+        }
         transform.localRotation=Quaternion.Euler(transform.localRotation.x,rotation,transform.localRotation.z);
         transform.position+=new Vector3(axis.y,axis.y,axis.z)*MovementSpeed*Time.deltaTime;
     }

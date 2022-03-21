@@ -14,6 +14,9 @@ public abstract class Actor : MonoBehaviour
     {
         animator=GetComponent<Animator>();
         brain.Init(this);
+        Utils.AnimationMapper mapper=new Utils.AnimationMapper();
+        mapper.UnMap(animator.runtimeAnimatorController as UnityEditor.Animations.AnimatorController);
+        mapper.Map(animator.runtimeAnimatorController as UnityEditor.Animations.AnimatorController);
     }
 
     public virtual void Update()
