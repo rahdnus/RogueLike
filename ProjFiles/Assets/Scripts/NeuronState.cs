@@ -98,7 +98,8 @@ public class P_JumpNeuron:NeuronState
 }
 public class P_AttackNeuron:NeuronState
 {
-    float timer,counter=0;
+    float timer=-1,counter=0;
+    int secondframe=0;
     private int index;
     public P_AttackNeuron(int _index)
     {
@@ -109,16 +110,30 @@ public class P_AttackNeuron:NeuronState
     {
         base.INIT(_brain);
         relatedstates=new NeuronState[2];
-        Debug.Log("IN ATTACK NUE");
     }
        public override void ACT()
     {
-        counter+=Time.deltaTime;
-        if(counter>timer)
+        if (secondframe == 2 && timer==-1)
         {
-            counter=0;
-         TRANSITION(-1);
+            //Because Unity Fuking sucks ass 
+            //animator takes a frame to switch to new animation so getanimatorclip always return old animation
+            timer = brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+            brain.actor.animator.applyRootMotion=true;
+            Debug.Log(brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name + brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         }
+        else
+            secondframe += 1;
+        
+        if (timer != -1)
+        {
+            counter += Time.deltaTime;
+            if (counter > timer)
+            {
+                TRANSITION(-1);
+            }
+        }
+      
+      
     }
     public override void CHECK()
     {
@@ -127,12 +142,17 @@ public class P_AttackNeuron:NeuronState
     public override void ONENTER()
     {
         brain.actor.Attack(index);
-        timer=brain.actor.animator.GetCurrentAnimatorClipInfo(0).Length;
-
+      
     }
 
     public override void ONEXIT()
     {
+        counter=0;
+        timer=-1;
+        secondframe=0;
+        brain.actor.animator.applyRootMotion=false;
+
+
     }
 }
 public class P_DamageNeuron:NeuronState
