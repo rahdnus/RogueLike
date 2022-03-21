@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : Actor
 {
+
     public GameObject Fireprefab;
     public Transform arm,launchpoint;
     public Skill[] skill=new Skill[2];
@@ -25,10 +26,11 @@ public class Player : Actor
         transform.localRotation=Quaternion.Euler(transform.localRotation.x,rotation,transform.localRotation.z);
         transform.position+=new Vector3(axis.y,axis.y,axis.z)*MovementSpeed*Time.deltaTime;
     }
-    public override void Attack()
+    public override void Attack(int index)
     {
-        skill[1].Init(this);
-        animator.Play("Launch");
+        animator.Play(moves.animationNames[index],0);
+        // skill[1].Init(this);
+        // animator.Play("Launch");
         // skill[0].Init(this);
         // animator.Play("Dash");
     }

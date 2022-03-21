@@ -20,7 +20,7 @@ public class Enemy : Actor
                     (this,Fireprefab,arm,true,0,
                     "ActivateSkill","Attack"); 
     }
-    public override void Attack()
+    public override void Attack(int index)
     {
         skill[0].Init(this);
         animator.Play("Attack",0);

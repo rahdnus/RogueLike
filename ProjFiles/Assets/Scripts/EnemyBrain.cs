@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Neurons;
 
 public class EnemyBrain : Brain
 {
@@ -27,7 +28,7 @@ public class EnemyBrain : Brain
 
 
 }
-
+namespace Neurons{
 public class EN_BaseNeuron:NeuronState
 {
     float counter=0;
@@ -115,7 +116,7 @@ public class EN_AttackNeuron:NeuronState
 
     public override void ONENTER()
     {
-        brain.actor.Attack();
+        brain.actor.Attack(0);
         timer=brain.actor.animator.GetCurrentAnimatorClipInfo(0).Length;
 
     }
@@ -157,4 +158,4 @@ public class EN_DamageNeuron:NeuronState
     {
     }
 }
-
+}

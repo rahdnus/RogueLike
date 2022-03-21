@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Neurons;
 public abstract class Brain : MonoBehaviour
 {
     public Actor actor;

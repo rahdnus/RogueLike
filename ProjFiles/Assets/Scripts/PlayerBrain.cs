@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Neurons;
 
 public class PlayerBrain : Brain
 {
@@ -25,42 +26,5 @@ public class PlayerBrain : Brain
         currentstate.ACT();
         currentstate.CHECK();
     }
-
 }
-public class P_DamageNeuron:NeuronState
-{
-    float timer,counter=0;
-   public override void INIT(Brain _brain)
-    {
-        base.INIT(_brain);
-        relatedstates=new NeuronState[2];
 
-    }
-       public override void ACT()
-    {
-        Debug.Log("in act");
-        counter+=Time.deltaTime;
-        if(counter>timer)
-        {
-         TRANSITION(-1);
-         counter=0;
-        }
-    }
-    public override void CHECK()
-    {
-    }
-
-    public override void ONENTER()
-    {
-        brain.actor.TakeDamage();
-        timer=brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
-        Debug.Log(brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name+brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
-
-        Debug.Log(timer);
-
-    }
-
-    public override void ONEXIT()
-    {
-    }
-}
