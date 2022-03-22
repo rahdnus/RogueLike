@@ -20,7 +20,6 @@ public abstract class Brain : MonoBehaviour
     }
     public void BeingAttacked()
     {
-        Debug.Log("inti");
         currentstate.ONEXIT();
         currentstate=damagestates[0];
         currentstate.ONENTER();

@@ -24,6 +24,7 @@ public abstract class NeuronState
 public class P_BaseNeuron:NeuronState
 {
     int attackCounter,noOfAttacks;
+    Vector3 axis;
     public override void INIT(Brain _brain)
     {
 
@@ -33,13 +34,15 @@ public class P_BaseNeuron:NeuronState
         attackCounter=0;
         #region States
 
-            relatedstates=new NeuronState[1+noOfAttacks];
-            relatedstates[0]=new P_JumpNeuron();
+            relatedstates=new NeuronState[2+noOfAttacks];
+            relatedstates[0]=new P_JumpNeuron(0);
             relatedstates[0].INIT(_brain);
+            relatedstates[1]=new P_JumpNeuron(1);
+            relatedstates[1].INIT(_brain);
             for(int i=1;i<=noOfAttacks;i++)
             {
-            relatedstates[i]=new P_AttackNeuron(i-1);
-            relatedstates[i].INIT(_brain);
+            relatedstates[i+1]=new P_AttackNeuron(i-1);
+            relatedstates[i+1].INIT(_brain);
             }
 
         #endregion
@@ -47,20 +50,23 @@ public class P_BaseNeuron:NeuronState
     }
        public override void ACT()
     {
-        Vector3 axis=new Vector3(0,0,Input.GetAxis("Horizontal"));
+        axis=new Vector3(0,0,Input.GetAxis("Horizontal"));
         brain.actor.Move(axis);
     }
     public override void CHECK()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
+            if(axis!=Vector3.zero)
+            TRANSITION(1);
+            else 
             TRANSITION(0);
         }
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
             // Debug.Log("wtf");
-            TRANSITION(attackCounter+1);
-            attackCounter=(attackCounter+1)%noOfAttacks;
+            TRANSITION(attackCounter+2);
+            attackCounter=(attackCounter+2)%noOfAttacks;
         }
     }
 
@@ -74,6 +80,16 @@ public class P_BaseNeuron:NeuronState
 }
 public class P_JumpNeuron:NeuronState
 {
+    int index;
+    float counter,timer;
+    int secondframe;
+    public P_JumpNeuron(int _index)
+    {
+        this.index=_index;
+        counter=0;
+        timer=-1;
+        secondframe=0;
+    }
    public override void INIT(Brain _brain)
     {
         base.INIT(_brain);
@@ -82,18 +98,45 @@ public class P_JumpNeuron:NeuronState
     }
        public override void ACT()
     {
-        Debug.Log("Jump");
+        if (secondframe == 2 && timer==-1)
+        {
+            //Because Unity Fuking sucks ass 
+            //animator takes a frame to switch to new animation so getanimatorclip always return old animation
+            timer = brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+            if(index==1)
+                brain.actor.animator.applyRootMotion=true;
+            Debug.Log(brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name + brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        }
+        else
+            secondframe += 1;
+        
+      
     }
     public override void CHECK()
     {  
+          if (timer != -1)
+        {
+            counter += Time.deltaTime;
+            if (counter > timer)
+            {
+                TRANSITION(-1);
+            }
+        }
     }
 
     public override void ONENTER()
     {
+       var player= brain.actor as Player;
+       player.Jump(index);
     }
 
     public override void ONEXIT()
     {
+        counter=0;
+        timer=-1;
+        secondframe=0;
+            brain.actor.animator.applyRootMotion=false;
+
     }
 }
 public class P_AttackNeuron:NeuronState
@@ -124,6 +167,12 @@ public class P_AttackNeuron:NeuronState
         else
             secondframe += 1;
         
+    
+      
+      
+    }
+    public override void CHECK()
+    {
         if (timer != -1)
         {
             counter += Time.deltaTime;
@@ -132,11 +181,6 @@ public class P_AttackNeuron:NeuronState
                 TRANSITION(-1);
             }
         }
-      
-      
-    }
-    public override void CHECK()
-    {
     }
 
     public override void ONENTER()
@@ -167,15 +211,15 @@ public class P_DamageNeuron:NeuronState
        public override void ACT()
     {
         Debug.Log("in act");
-        counter+=Time.deltaTime;
+          counter+=Time.deltaTime;
+    }
+    public override void CHECK()
+    {
         if(counter>timer)
         {
          TRANSITION(-1);
          counter=0;
         }
-    }
-    public override void CHECK()
-    {
     }
 
     public override void ONENTER()

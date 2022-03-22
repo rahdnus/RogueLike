@@ -43,6 +43,18 @@ public class Player : Actor
         // skill[0].Init(this);
         // animator.Play("Dash");
     }
+    public void Jump(int index)
+    {
+        if(index==0)
+        {
+            animator.Play("standJump");
+
+        }
+        else if(index==1)
+        {
+            animator.Play("runJump");
+        }
+    }
     public override void Dodge()
     {    
         animator.Play("dodge");
