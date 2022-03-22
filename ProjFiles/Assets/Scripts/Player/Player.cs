@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : Actor
 {
     float prevrotation=0;
+    bool atrest=true;
     public GameObject Fireprefab;
     public Transform arm,launchpoint;
     public Skill[] skill=new Skill[2];
@@ -19,17 +20,34 @@ public class Player : Actor
                     "ActivateSkill","Launch"); 
         base.Start();
     }    
+    float timer=0.2f,counter=0;
+
     public override void Move(Vector3 axis)
     {
         float rotation=prevrotation;
-        if(axis.z>0)
+        if(axis.z!=0)
         {
-            rotation=0;
-            prevrotation=rotation;
+             counter=0;
+            rotation=axis.z>0?0:-180;
+         if(atrest)
+            { 
+                animator.Play("Run",0);
+                atrest=false;
+            }
         }
-        else if(axis.z<0)
+      
+        else
         {
-            rotation=-180;
+            counter+=Time.deltaTime;
+            if(counter>timer)
+            {
+                animator.Play("rest");
+                 atrest=true;
+                 counter=0;
+            }  
+        }
+        if(prevrotation!=rotation)
+        {
             prevrotation=rotation;
         }
         transform.localRotation=Quaternion.Euler(transform.localRotation.x,rotation,transform.localRotation.z);

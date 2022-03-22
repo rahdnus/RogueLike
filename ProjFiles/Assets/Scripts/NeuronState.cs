@@ -24,6 +24,7 @@ public abstract class NeuronState
 public class P_BaseNeuron:NeuronState
 {
     int attackCounter,noOfAttacks;
+    float nextattackWait=.7f,counter=0;
     Vector3 axis;
     public override void INIT(Brain _brain)
     {
@@ -48,13 +49,26 @@ public class P_BaseNeuron:NeuronState
         #endregion
 
     }
-       public override void ACT()
+    public override void ACT()
     {
         axis=new Vector3(0,0,Input.GetAxis("Horizontal"));
         brain.actor.Move(axis);
     }
     public override void CHECK()
     {
+        counter+=Time.deltaTime;
+        if(counter>nextattackWait)
+        {
+            attackCounter=0;
+            brain.actor.animator.applyRootMotion=false;
+            counter=0;
+        }
+          if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            // Debug.Log("wtf");
+            TRANSITION(attackCounter+2);
+            attackCounter=(attackCounter+2)%noOfAttacks;
+        }
         if(Input.GetKeyDown(KeyCode.Space))
         {
             if(axis!=Vector3.zero)
@@ -62,20 +76,19 @@ public class P_BaseNeuron:NeuronState
             else 
             TRANSITION(0);
         }
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            // Debug.Log("wtf");
-            TRANSITION(attackCounter+2);
-            attackCounter=(attackCounter+2)%noOfAttacks;
-        }
+      
+
     }
 
     public override void ONENTER()
     {
+        counter=0;
+        
     }
 
     public override void ONEXIT()
     {
+        counter=0;
     }
 }
 public class P_JumpNeuron:NeuronState
@@ -142,11 +155,13 @@ public class P_JumpNeuron:NeuronState
 public class P_AttackNeuron:NeuronState
 {
     float timer=-1,counter=0;
+    float returnOffset;
     int secondframe=0;
     private int index;
     public P_AttackNeuron(int _index)
     {
         this.index=_index;
+        returnOffset=0.7f;
     }
 
     public override void INIT(Brain _brain)
@@ -160,14 +175,14 @@ public class P_AttackNeuron:NeuronState
         {
             //Because Unity Fuking sucks ass 
             //animator takes a frame to switch to new animation so getanimatorclip always return old animation
-            timer = brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+            timer = brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length-returnOffset;
             brain.actor.animator.applyRootMotion=true;
             Debug.Log(brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name + brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         }
         else
             secondframe += 1;
         
-    
+
       
       
     }
@@ -194,9 +209,6 @@ public class P_AttackNeuron:NeuronState
         counter=0;
         timer=-1;
         secondframe=0;
-        brain.actor.animator.applyRootMotion=false;
-
-
     }
 }
 public class P_DamageNeuron:NeuronState
