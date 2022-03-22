@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Player : Actor
 {
+    #region misc
     float prevrotation=0;
+    float resttimer=0.2f,restcounter=0;
     bool atrest=true;
+    #endregion
     public GameObject Fireprefab;
-    public Transform arm,launchpoint;
+    public Transform arm,launchpoint,foot;
+    [SerializeField]LayerMask groundmask;
     public Skill[] skill=new Skill[2];
 
     public override void Start()
@@ -20,36 +24,30 @@ public class Player : Actor
                     "ActivateSkill","Launch"); 
         base.Start();
     }    
-    float timer=0.2f,counter=0;
-
     public override void Move(Vector3 axis)
     {
         float rotation=prevrotation;
-        if(axis.z!=0)
-        {
-             counter=0;
-            rotation=axis.z>0?0:-180;
-         if(atrest)
-            { 
-                animator.Play("Run",0);
-                atrest=false;
+        if (axis.z != 0){
+            restcounter = 0;
+            rotation = axis.z > 0 ? 0 : -180;
+            if (atrest)
+            {
+                animator.Play("Run", 0);
+                atrest = false;
             }
         }
-      
-        else
-        {
-            counter+=Time.deltaTime;
-            if(counter>timer)
+        else{
+            restcounter += Time.deltaTime;
+            if (restcounter > resttimer)
             {
                 animator.Play("rest");
-                 atrest=true;
-                 counter=0;
-            }  
+                atrest = true;
+                restcounter = 0;
+            }
         }
-        if(prevrotation!=rotation)
-        {
-            prevrotation=rotation;
-        }
+        
+        if(prevrotation!=rotation){prevrotation=rotation;}
+
         transform.localRotation=Quaternion.Euler(transform.localRotation.x,rotation,transform.localRotation.z);
         transform.position+=new Vector3(axis.y,axis.y,axis.z)*MovementSpeed*Time.deltaTime;
     }
@@ -63,15 +61,19 @@ public class Player : Actor
     }
     public void Jump(int index)
     {
+        atrest=true;//so that run animation can play
         if(index==0)
         {
             animator.Play("standJump");
-
         }
         else if(index==1)
         {
             animator.Play("runJump");
         }
+    }
+    public void Fall()
+    {
+        
     }
     public override void Dodge()
     {    
@@ -91,7 +93,6 @@ public class Player : Actor
     void OnDrawGizmosSelected()
     {
     }
-
     public override void TakeDamage()
     {
 
@@ -99,4 +100,14 @@ public class Player : Actor
 
         Debug.Log(gameObject.name+" being attacked");
     }
+    public bool CheckGround()
+    {
+        RaycastHit hit;
+        float coyote=transform.rotation.y!=0?-1:1;
+        Vector3 offset=new Vector3(0,0.2f,-coyote);
+        return Physics.Raycast(foot.position+offset, Vector3.down,out hit,0.5f, groundmask);
+        // Debug.Log(hit.collider.gameObject.name);
+
+    }
+
 }
