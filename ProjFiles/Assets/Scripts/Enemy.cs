@@ -34,7 +34,7 @@ public class Enemy : Actor
         throw new System.NotImplementedException();
     }
 
-    public override void Move(Vector3 axis)
+    public override void Move(Vector3 axis,int falling)
     {
         throw new System.NotImplementedException();
     }

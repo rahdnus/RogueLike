@@ -65,7 +65,7 @@ public class P_BaseNeuron:NeuronState
     public override void ACT()
     {
         axis=new Vector3(0,0,Input.GetAxis("Horizontal"));
-        brain.actor.Move(axis);
+        brain.actor.Move(axis,0);
     }
     public override void CHECK()
     {
@@ -90,7 +90,7 @@ public class P_BaseNeuron:NeuronState
             else 
             TRANSITION(0);
         }
-        if(!player.CheckGround())
+        if(!player.CheckGround(0.2f))
         {
             TRANSITION(5);
         }
@@ -102,7 +102,6 @@ public class P_BaseNeuron:NeuronState
     public override void ONENTER()
     {
         counter=0;
-        
     }
 
     public override void ONEXIT()
@@ -173,54 +172,49 @@ public class P_JumpNeuron:NeuronState
 }
 public class P_FallNeuron:NeuronState
 {
+    bool hitground;
+    Vector3 axis;
     Player player;
-    float counter,timer;
-    int secondframe;
+    // float counter,timer,transitioncounter,transitiontimer;
+    // int secondframe;
     public P_FallNeuron()
     {
-        counter=0;
-        timer=-1;
-        secondframe=0;
+        // counter=0;
+        // timer=-1;
+        // secondframe=0;
     }
     public override void INIT(Brain _brain)
     {
         base.INIT(_brain);
         relatedstates=new NeuronState[2];
         player=_brain.actor as Player;
+        // transitioncounter=0;
+        // transitiontimer=0.25f;
+        // timer=-1;
     }
     public override void ACT()
     {
-        // if (secondframe == 2 && timer==-1)
-        // {
-        //     //Because Unity Fuking sucks ass 
-        //     //animator takes a frame to switch to new animation so getanimatorclip always return old animation
-        //     timer = brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
-        //     brain.actor.animator.applyRootMotion=true;
-        //     Debug.Log(brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name + brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
-        // }
-        // else
-        //     secondframe += 1;
-        
+        axis=new Vector3(0,0,Input.GetAxis("Horizontal"));
+        brain.actor.Move(axis,1);
     }
     public override void CHECK()
     {  
-         if(player.CheckGround())
+         if(player.CheckGround(-0.5f))
         {
-            TRANSITION(-1);
+           TRANSITION(-1);
         }
     }
     public override void ONENTER()
     {
         player.Fall();
-        Debug.Log("falling");
     }
     public override void ONEXIT()
     {
-        counter=0;
-        timer=-1;
-        secondframe=0;
-        brain.actor.animator.applyRootMotion=false;
-
+        // counter=0;
+        // timer=-1;
+        // secondframe=0;
+        // transitioncounter=0;
+        // brain.actor.animator.applyRootMotion=false;
     }
 }
 public class P_AttackNeuron:NeuronState

@@ -24,7 +24,7 @@ public class Player : Actor
                     "ActivateSkill","Launch"); 
         base.Start();
     }    
-    public override void Move(Vector3 axis)
+    public override void Move(Vector3 axis,int falling)
     {
         float rotation=prevrotation;
         if (axis.z != 0){
@@ -32,20 +32,28 @@ public class Player : Actor
             rotation = axis.z > 0 ? 0 : -180;
             if (atrest)
             {
-                animator.Play("Run", 0);
-                atrest = false;
+                if(falling==0)
+                {
+                    animator.Play("Run", 0);
+                    atrest = false;
+                }
+                   
             }
         }
         else{
             restcounter += Time.deltaTime;
             if (restcounter > resttimer)
             {
-                animator.Play("rest");
-                atrest = true;
+                if(falling==0)
+                {
+                    animator.Play("rest");
+                    atrest = true;
+                }
+                   
                 restcounter = 0;
             }
         }
-        
+        Debug.Log(rotation);
         if(prevrotation!=rotation){prevrotation=rotation;}
 
         transform.localRotation=Quaternion.Euler(transform.localRotation.x,rotation,transform.localRotation.z);
@@ -73,7 +81,8 @@ public class Player : Actor
     }
     public void Fall()
     {
-        
+        atrest=true;    
+        animator.CrossFade("Fall",1f,0);
     }
     public override void Dodge()
     {    
@@ -100,11 +109,12 @@ public class Player : Actor
 
         Debug.Log(gameObject.name+" being attacked");
     }
-    public bool CheckGround()
+    public bool CheckGround(float yoffset=0)
     {
         RaycastHit hit;
-        float coyote=transform.rotation.y!=0?-1:1;
-        Vector3 offset=new Vector3(0,0.2f,-coyote);
+        float coyote=prevrotation!=0?1:-1;
+        Vector3 offset=new Vector3(0,yoffset,coyote);
+        // Debug.Log(coyote);
         return Physics.Raycast(foot.position+offset, Vector3.down,out hit,0.5f, groundmask);
         // Debug.Log(hit.collider.gameObject.name);
 
