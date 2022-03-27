@@ -22,8 +22,8 @@ public class Enemy : Actor
     }
     public override void Attack(int index)
     {
-        skill[0].Init(this);
-        animator.Play("Attack",0);
+        // skill[0].Init(this);
+        // animator.Play("Attack",0);
     }
     public void ActivateSkill(int i)
     {

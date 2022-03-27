@@ -6,7 +6,7 @@ public abstract class Brain : MonoBehaviour
 {
     public Actor actor;
     [SerializeField]protected NeuronState[] basestate;
-    protected NeuronState[] damagestates;
+    protected DamageNeuronState damagestates;
     public NeuronState currentstate;
     public virtual void Init(Actor _actor)
     {
@@ -18,10 +18,11 @@ public abstract class Brain : MonoBehaviour
         int index=Mathf.Abs(i)-1;
         return basestate[index];
     }
-    public void BeingAttacked()
+    public virtual void BeingAttacked(attackDirecton directon)
     {
         currentstate.ONEXIT();
-        currentstate=damagestates[0];
+        damagestates.SetDirection(directon);
+        currentstate=damagestates;
         currentstate.ONENTER();
     }
 }

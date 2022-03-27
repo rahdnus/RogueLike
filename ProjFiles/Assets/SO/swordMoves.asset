@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: swordMoves
   m_EditorClassIdentifier: 
   animationNames:
-  - Slash
-  - lowSweep
-  - midSweep
+  - U_Slash
+  - D_lowSweep
+  - B_midSweep

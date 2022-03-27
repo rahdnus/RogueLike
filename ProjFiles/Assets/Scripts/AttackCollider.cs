@@ -22,7 +22,27 @@ public class AttackCollider : MonoBehaviour
        int otherlayer=1<<other.gameObject.layer;
         if((otherlayer & mask.value)>0)
        {
-           other.gameObject.GetComponentInParent<Actor>().brain.BeingAttacked();
+           attackDirecton directon;
+           string animationName=gameObject.GetComponentInParent<Actor>().currentAnimationName;
+           switch(animationName[0])
+           {
+               case 'U':
+               directon=attackDirecton.up;
+               break;
+            
+               case 'D':
+               directon=attackDirecton.down;
+               break;
+
+               case 'B':
+               directon=attackDirecton.back;
+
+               break;
+               default:
+               directon=attackDirecton.none;
+               break;
+           }
+           other.gameObject.GetComponentInParent<Actor>().brain.BeingAttacked(directon);
            StatusEffect effect=null;
 
            if(status==Status.Burn)
@@ -39,4 +59,8 @@ public class AttackCollider : MonoBehaviour
         //    other.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward*50,ForceMode.Impulse);
        }
    }
+}
+public enum attackDirecton
+{
+   none,up,down,back
 }

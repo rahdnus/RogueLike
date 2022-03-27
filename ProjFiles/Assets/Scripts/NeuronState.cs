@@ -21,4 +21,27 @@ public abstract class NeuronState
         brain.currentstate.ONENTER();
     }
 }
+    public class DamageNeuronState : NeuronState
+    {
+       protected attackDirecton currentattackDirection;
+        public void SetDirection(attackDirecton directon)
+        {
+            currentattackDirection=directon;
+        }
+        public override void ACT()
+        {
+        }
+
+        public override void CHECK()
+        {
+        }
+
+        public override void ONENTER()
+        {
+        }
+
+        public override void ONEXIT()
+        {
+        }
+    }
 }

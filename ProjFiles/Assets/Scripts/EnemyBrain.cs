@@ -12,9 +12,9 @@ public class EnemyBrain : Brain
         basestate=new NeuronState[1];
         basestate[0]=new EN_BaseNeuron();
 
-        damagestates=new NeuronState[1];
-        damagestates[0]=new EN_DamageNeuron();
-        damagestates[0].INIT(this);
+        damagestates=new DamageNeuronState();
+        damagestates=new EN_DamageNeuron();
+        damagestates.INIT(this);
 
         currentstate=basestate[0];
         currentstate.INIT(this);
@@ -116,7 +116,7 @@ public class EN_AttackNeuron:NeuronState
 
     public override void ONENTER()
     {
-        brain.actor.Attack(0);
+        // brain.actor.Attack(0);
         timer=brain.actor.animator.GetCurrentAnimatorClipInfo(0).Length;
 
     }
@@ -125,7 +125,7 @@ public class EN_AttackNeuron:NeuronState
     {
     }
 }
-public class EN_DamageNeuron:NeuronState
+public class EN_DamageNeuron:DamageNeuronState
 {
     float timer,counter=0;
    public override void INIT(Brain _brain)
@@ -150,8 +150,9 @@ public class EN_DamageNeuron:NeuronState
     public override void ONENTER()
     {
         brain.actor.TakeDamage();
-        timer=brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
-        Debug.Log(brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name+brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        // timer=brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+        Debug.Log(currentattackDirection);
+        // Debug.Log(brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name+brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
     }
 
     public override void ONEXIT()

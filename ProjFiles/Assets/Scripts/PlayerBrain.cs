@@ -14,9 +14,9 @@ public class PlayerBrain : Brain
         basestate=new NeuronState[1];
         basestate[0]=new P_BaseNeuron();
 
-        damagestates=new NeuronState[1];
-        damagestates[0]=new P_DamageNeuron();
-        damagestates[0].INIT(this);
+        damagestates=new DamageNeuronState();
+        damagestates=new P_DamageNeuron();
+        damagestates.INIT(this);
 
         currentstate=basestate[0];
         currentstate.INIT(this);
@@ -195,7 +195,7 @@ public class P_FallNeuron:NeuronState
     public override void ACT()
     {
         axis=new Vector3(0,0,Input.GetAxis("Horizontal"));
-        brain.actor.Move(axis,1);
+        // brain.actor.Move(axis,3);
     }
     public override void CHECK()
     {  
@@ -207,9 +207,11 @@ public class P_FallNeuron:NeuronState
     public override void ONENTER()
     {
         player.Fall();
+        player.setMoveSpeed(1);
     }
     public override void ONEXIT()
     {
+        player.resetMoveSpeed();
         // counter=0;
         // timer=-1;
         // secondframe=0;
@@ -241,8 +243,9 @@ public class P_AttackNeuron:NeuronState
             //Because Unity Fuking sucks ass 
             //animator takes a frame to switch to new animation so getanimatorclip always return old animation
             timer = brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length-returnOffset;
-            brain.actor.animator.applyRootMotion=true;
-            Debug.Log(brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name + brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+            // brain.actor.animator.applyRootMotion=true;
+            brain.actor.currentAnimationName=brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name ;
+            // Debug.Log(brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name + brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         }
         else
             secondframe += 1;
@@ -276,7 +279,7 @@ public class P_AttackNeuron:NeuronState
         secondframe=0;
     }
 }
-public class P_DamageNeuron:NeuronState
+public class P_DamageNeuron:DamageNeuronState
 {
     float timer,counter=0;
    public override void INIT(Brain _brain)
@@ -304,7 +307,7 @@ public class P_DamageNeuron:NeuronState
         brain.actor.TakeDamage();
         timer=brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
         Debug.Log(brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name+brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
-
+        Debug.Log(currentattackDirection);
         Debug.Log(timer);
 
     }

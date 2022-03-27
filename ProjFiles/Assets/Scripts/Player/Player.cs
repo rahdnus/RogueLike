@@ -53,11 +53,12 @@ public class Player : Actor
                 restcounter = 0;
             }
         }
-        Debug.Log(rotation);
+        // Debug.Log(rotation);
         if(prevrotation!=rotation){prevrotation=rotation;}
 
+        
         transform.localRotation=Quaternion.Euler(transform.localRotation.x,rotation,transform.localRotation.z);
-        transform.position+=new Vector3(axis.y,axis.y,axis.z)*MovementSpeed*Time.deltaTime;
+        transform.position=transform.position+new Vector3(0,0,axis.z)*movementSpeed*Time.deltaTime;
     }
     public override void Attack(int index)
     {
