@@ -7,6 +7,7 @@ public abstract class Brain : MonoBehaviour
     public Actor actor;
     [SerializeField]protected NeuronState[] basestate;
     protected DamageNeuronState damagestates;
+    protected NeuronState dieState;
     public NeuronState currentstate;
     public virtual void Init(Actor _actor)
     {
@@ -26,9 +27,9 @@ public abstract class Brain : MonoBehaviour
         int value=actor.CalculateDamage(damage);
         actor.Modifiyhealth(value);
 
-        if(actor.health<0)
+        if(actor.health<=0)
         {
-            
+            currentstate=dieState;
         }
         else
         {

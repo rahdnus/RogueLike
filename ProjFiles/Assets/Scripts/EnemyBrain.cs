@@ -17,6 +17,9 @@ public class EnemyBrain : Brain
         damagestates=new EN_DamageNeuron();
         damagestates.INIT(this);
 
+        dieState=new EN_DieNeuron();
+        dieState.INIT(this);
+        
         currentstate=basestate[0];
         currentstate.INIT(this);
        
@@ -131,20 +134,27 @@ public class EN_AttackNeuron:NeuronState
 }
 public class EN_DamageNeuron:DamageNeuronState
 {
-    float timer,counter=0;
+    float timer=-1,counter=0;
    public override void INIT(Brain _brain)
     {
         base.INIT(_brain);
         relatedstates=new NeuronState[2];
 
     }
+    int times;
        public override void ACT()
     {
+        times+=1;
         counter+=Time.deltaTime;
-        if(counter>timer)
-          {
+        if(counter>timer && timer!=-1)
+        {
          TRANSITION(-1);
          counter=0;
+        }
+        if(times==10)
+        {
+            timer=brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+            Debug.Log(brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name+brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
         }
     }
     public override void CHECK()
@@ -154,13 +164,14 @@ public class EN_DamageNeuron:DamageNeuronState
     public override void ONENTER()
     {
         brain.actor.Hurt();
-        // timer=brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
-        Debug.Log(currentattackDirection);
-        // Debug.Log(brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name+brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);
+        timer=-1;
+        times=0;
     }
 
     public override void ONEXIT()
     {
+        times=0;
+        timer=-1;
     }
 }
 public class EN_DieNeuron:NeuronState

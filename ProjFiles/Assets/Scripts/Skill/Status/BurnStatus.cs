@@ -6,8 +6,6 @@ public class BurnStatus : StatusEffect
 {
   public override void Enact()
   {
-      int value=targetactor.CalculateDamage(10);
-      targetactor.Modifiyhealth(value);
-      Debug.Log("Burn");
+      targetactor.brain.BeingAttacked(attackDirecton.none,10);
   }
 }

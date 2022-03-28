@@ -18,6 +18,9 @@ public class PlayerBrain : Brain
         damagestates=new P_DamageNeuron();
         damagestates.INIT(this);
 
+        dieState=new P_DieNeuron();
+        dieState.INIT(this);
+
         currentstate=basestate[0];
         currentstate.INIT(this);
        

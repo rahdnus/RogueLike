@@ -42,6 +42,5 @@ public class Enemy : Actor
     public override void Hurt()
     {
         animator.Play("Hurt1",0);
-        Debug.Log(gameObject.name+" being attacked");
     }
 }

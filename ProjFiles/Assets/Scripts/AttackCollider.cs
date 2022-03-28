@@ -65,7 +65,7 @@ void Start()
            }
          
             if(effect!=null)
-            effect.Init(other.gameObject.GetComponent<Actor>(),0.5f,3f);
+            effect.Init(other.gameObject.GetComponent<Actor>(),1f,3f);
         }
    }
 }

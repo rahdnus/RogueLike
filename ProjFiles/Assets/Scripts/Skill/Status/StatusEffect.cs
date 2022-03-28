@@ -5,17 +5,17 @@ using UnityEngine;
 public  class StatusEffect:MonoBehaviour 
 {
    protected Actor targetactor;
-    protected float fadetime=3f,waittime=0.5f;
+    protected float fadetime=3.0f,waittime=1.0f;
     protected float fadecounter=0f,waitcounter=0f;
     void Update()
     {
         waitcounter+=Time.deltaTime;
         if(waitcounter>waittime)
         {
-            Enact();
             waitcounter=0;
+            Enact();
         }
-         fadecounter+=Time.deltaTime;
+        fadecounter+=Time.deltaTime;
         if(fadecounter>fadetime)
         {
             fadecounter=0;
