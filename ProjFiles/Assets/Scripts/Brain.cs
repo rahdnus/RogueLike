@@ -18,10 +18,14 @@ public abstract class Brain : MonoBehaviour
         int index=Mathf.Abs(i)-1;
         return basestate[index];
     }
-    public virtual void BeingAttacked(attackDirecton directon)
+    public virtual void BeingAttacked(attackDirecton directon,int damage)
     {
         currentstate.ONEXIT();
         damagestates.SetDirection(directon);
+        
+        int value=actor.CalculateDamage(damage);
+        actor.Modifiyhealth(value);
+
         currentstate=damagestates;
         currentstate.ONENTER();
     }

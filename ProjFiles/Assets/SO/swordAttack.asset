@@ -9,10 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e657a255213eba6438ac12e308ec4b44, type: 3}
-  m_Name: swordMoves
+  m_Script: {fileID: 11500000, guid: 1651c0c3211b10c4898547b1d196acb7, type: 3}
+  m_Name: swordAttack
   m_EditorClassIdentifier: 
-  animationNames:
-  - U_Slash
-  - D_lowSweep
-  - B_midSweep
+  attacks:
+  - animationName: U_Slash
+    damageValue: 20
+  - animationName: B_midSweep
+    damageValue: 40
+  - animationName: D_lowSweep
+    damageValue: 50

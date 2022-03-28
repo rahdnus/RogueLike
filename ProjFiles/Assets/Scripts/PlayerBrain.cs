@@ -41,7 +41,7 @@ public class P_BaseNeuron:NeuronState
 
         base.INIT(_brain);
         player=brain.actor as Player; 
-        noOfAttacks=_brain.actor.moves.animationNames.Length;
+        noOfAttacks=_brain.actor.moves.attacks.Length;
         attackCounter=0;
         #region States
 

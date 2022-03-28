@@ -62,7 +62,7 @@ public class Player : Actor
     }
     public override void Attack(int index)
     {
-        animator.Play(moves.animationNames[index],0);
+        animator.Play(moves.attacks[index].animationName,0);
         // skill[1].Init(this);
         // animator.Play("Launch");
         // skill[0].Init(this);

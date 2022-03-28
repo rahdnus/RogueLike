@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class AttackCollider : MonoBehaviour
 {
+    Actor actor;
     [SerializeField] LayerMask mask;
-    [SerializeField]Status status;
+    [SerializeField]Status status=Status.None;
 //     void OnCollisionEnter(Collision other)
 //    {
 //        Debug.Log(other.gameObject.layer);
@@ -16,6 +17,10 @@ public class AttackCollider : MonoBehaviour
 //            other.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward*50,ForceMode.Impulse);
 //        }
 //    }
+void Start()
+{
+    actor=gameObject.GetComponentInParent<Actor>();
+}
     void OnTriggerEnter(Collider other)
    {
 
@@ -23,7 +28,7 @@ public class AttackCollider : MonoBehaviour
         if((otherlayer & mask.value)>0)
        {
            attackDirecton directon;
-           string animationName=gameObject.GetComponentInParent<Actor>().currentAnimationName;
+           string animationName=actor.currentAnimationName;
            switch(animationName[0])
            {
                case 'U':
@@ -42,7 +47,15 @@ public class AttackCollider : MonoBehaviour
                directon=attackDirecton.none;
                break;
            }
-           other.gameObject.GetComponentInParent<Actor>().brain.BeingAttacked(directon);
+           Debug.Log(animationName);
+           int index=actor.moves.GetIndex(animationName);
+           if(index>=0)
+           {
+                int damage=actor.moves.attacks[index].damageValue;
+                other.gameObject.GetComponentInParent<Actor>().brain.BeingAttacked(directon,damage);
+           }
+     
+
            StatusEffect effect=null;
 
            if(status==Status.Burn)
@@ -53,11 +66,7 @@ public class AttackCollider : MonoBehaviour
          
             if(effect!=null)
             effect.Init(other.gameObject.GetComponent<Actor>(),0.5f,3f);
-
-           
-
-        //    other.gameObject.GetComponent<Rigidbody>().AddForce(transform.forward*50,ForceMode.Impulse);
-       }
+        }
    }
 }
 public enum attackDirecton

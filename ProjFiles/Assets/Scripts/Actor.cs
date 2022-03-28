@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Actor : MonoBehaviour
 {
-        public Moves moves;
-        protected int health=100;
+    public AttackMoves moves;
+    protected int health=100;
     [SerializeField] protected float baseMovementSpeed; 
     protected float movementSpeed;
     [SerializeField] public Brain brain;

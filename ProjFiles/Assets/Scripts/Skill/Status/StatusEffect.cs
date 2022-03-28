@@ -35,5 +35,5 @@ public  class StatusEffect:MonoBehaviour
   }
 }
 public enum Status{
-    Burn,Stunned
+    None,Burn,Stunned
 }
