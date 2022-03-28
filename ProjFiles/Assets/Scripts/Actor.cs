@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Actor : MonoBehaviour
 {
     public AttackMoves moves;
-    protected int health=100;
+    public int health=100;
     [SerializeField] protected float baseMovementSpeed; 
     protected float movementSpeed;
     [SerializeField] public Brain brain;
@@ -50,10 +50,10 @@ public abstract class Actor : MonoBehaviour
         if(health<0)
             return;
         health-=value;
-        if(health<=0)
-        {
-            Die();
-        }
+        // if(health<=0)
+        // {
+        //     Die();
+        // }
     }
     public virtual void Die()
     {

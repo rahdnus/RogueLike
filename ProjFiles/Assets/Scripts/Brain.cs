@@ -26,7 +26,15 @@ public abstract class Brain : MonoBehaviour
         int value=actor.CalculateDamage(damage);
         actor.Modifiyhealth(value);
 
-        currentstate=damagestates;
+        if(actor.health<0)
+        {
+            
+        }
+        else
+        {
+            currentstate=damagestates;
+        }
+
         currentstate.ONENTER();
     }
 }

@@ -316,6 +316,39 @@ public class P_DamageNeuron:DamageNeuronState
     {
     }
 }
+public class P_DieNeuron:NeuronState
+{
+    float timer,counter=0;
+   public override void INIT(Brain _brain)
+    {
+        base.INIT(_brain);
+        relatedstates=null;
+    }
+       public override void ACT()
+    {
+        Debug.Log("in act");
+        counter+=Time.deltaTime;
+    }
+    public override void CHECK()
+    {
+        if(counter>timer)
+        {
+         TRANSITION(-1);
+         counter=0;
+        }
+    }
+
+    public override void ONENTER()
+    {
+        brain.actor.Die();
+        timer=brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+
+    }
+
+    public override void ONEXIT()
+    {
+    }
+}
 }
 }
 
