@@ -149,7 +149,7 @@ public class EN_DamageNeuron:DamageNeuronState
 
     public override void ONENTER()
     {
-        brain.actor.TakeDamage();
+        brain.actor.Hurt();
         // timer=brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length;
         Debug.Log(currentattackDirection);
         // Debug.Log(brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.name+brain.actor.animator.GetCurrentAnimatorClipInfo(0)[0].clip.length);

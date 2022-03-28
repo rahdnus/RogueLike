@@ -4,7 +4,7 @@ using UnityEngine;
 
 public  class StatusEffect:MonoBehaviour 
 {
-    Actor targetactor;
+   protected Actor targetactor;
     protected float fadetime=3f,waittime=0.5f;
     protected float fadecounter=0f,waitcounter=0f;
     void Update()

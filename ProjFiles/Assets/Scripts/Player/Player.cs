@@ -103,11 +103,9 @@ public class Player : Actor
     void OnDrawGizmosSelected()
     {
     }
-    public override void TakeDamage()
+    public override void Hurt()
     {
-
         animator.Play("Hurt",0);
-
         Debug.Log(gameObject.name+" being attacked");
     }
     public bool CheckGround(float yoffset=0)

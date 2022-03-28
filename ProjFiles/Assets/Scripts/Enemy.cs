@@ -39,7 +39,7 @@ public class Enemy : Actor
         throw new System.NotImplementedException();
     }
 
-    public override void TakeDamage()
+    public override void Hurt()
     {
         animator.Play("Hurt1",0);
         Debug.Log(gameObject.name+" being attacked");
