@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : Actor
 {
     [SerializeField] GameObject A_pointerSFX;
+    [SerializeField] LootTable table;
     public GameObject Fireprefab;
     public Transform arm,launchpoint;
     public Skill[] skill=new Skill[2];
@@ -12,7 +13,7 @@ public class Enemy : Actor
     public override void Start()
     {
         base.Start();
-
+        table.Init();
        var vfx= Instantiate(A_pointerSFX,transform.position,Quaternion.identity);
         Destroy(vfx,3f);
 
@@ -42,5 +43,10 @@ public class Enemy : Actor
     public override void Hurt()
     {
         animator.Play("Hurt1",0);
+    }
+    public override void Die()
+    {
+        table.SpawnLoot(transform.position);
+        base.Die();
     }
 }

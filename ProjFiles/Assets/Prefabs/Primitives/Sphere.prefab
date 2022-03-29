@@ -201,11 +201,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426a2825fc90fda43b8f6bbdc99665e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 0
+  moves: {fileID: 0}
+  health: 100
+  baseMovementSpeed: 0
   brain: {fileID: 0}
   animator: {fileID: 0}
+  currentAnimationName: 
   colliders: []
   A_pointerSFX: {fileID: 534250516773470950, guid: dadf1ef0b1c50364a8b6ac6af3e4779f, type: 3}
+  table: {fileID: 0}
   Fireprefab: {fileID: 0}
   arm: {fileID: 2510284538301398281}
   launchpoint: {fileID: 2510284538301398281}

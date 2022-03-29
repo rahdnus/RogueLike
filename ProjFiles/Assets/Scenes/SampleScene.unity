@@ -10089,9 +10089,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 801770500}
     - target: {fileID: 4470294532295486109, guid: ddb7d46325be45a409f263eabe0f43f1, type: 3}
-      propertyPath: Fireprefab
+      propertyPath: table
       value: 
-      objectReference: {fileID: 618555402}
+      objectReference: {fileID: 11400000, guid: e4d65ae7ad28c604b85ee6ac212614e7, type: 2}
+    - target: {fileID: 4470294532295486109, guid: ddb7d46325be45a409f263eabe0f43f1, type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4470294532295486109, guid: ddb7d46325be45a409f263eabe0f43f1, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 338006360}
     - target: {fileID: 4568305290527192202, guid: ddb7d46325be45a409f263eabe0f43f1, type: 3}
       propertyPath: m_Radius
       value: 0.69736665
