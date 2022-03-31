@@ -4,11 +4,16 @@ using UnityEngine;
 using _Inventory;
 public class Inventory : MonoBehaviour
 {  
-    public List<Item> items;
+    // public List<Item> items;
+    public List<Item> inventoryItems;
+    public System.Action<Item> onAdd;
+
+    public GameObject Canvas;
+    
     // public PickUpItem item1,item2,item3,item4;
     void Start()
     {
-        items=new List<Item>();
+        inventoryItems=new List<Item>();
     //     item4=item1;
     //     AddItem(item1);
     //     AddItem(item2);
@@ -28,11 +33,12 @@ public class Inventory : MonoBehaviour
      }
     void AddItem(Item item)
     {
-        items.Add(item);
+        inventoryItems.Add(item);
+        onAdd(item);
     }
     public void RemoveItem(Item item)
     {
-        items.Remove(item);
+        inventoryItems.Remove(item);
     }
     void OnTriggerEnter(Collider other)
     {
