@@ -20,11 +20,12 @@ public class InventoryView : MonoBehaviour
         GameObject UI=Instantiate(UI_template,Vector3.zero,Quaternion.identity);
         UI.transform.SetParent(UiContainer);
         ItemView view=UI.AddComponent<ItemView>();
-        view.Init(item);
+        view.Init(item,this);
         UI_items.Add(view);
     }
-    void RemoveUI()
+    public void RemoveUI(ItemView view)
     {
-
+        UI_items.Remove(view);
+        inventory.RemoveItem(view.item);
     }
 }

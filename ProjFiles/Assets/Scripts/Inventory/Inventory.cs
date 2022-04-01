@@ -39,6 +39,7 @@ public class Inventory : MonoBehaviour
     public void RemoveItem(Item item)
     {
         inventoryItems.Remove(item);
+        Debug.Log(inventoryItems.Count);
     }
     void OnTriggerEnter(Collider other)
     {
