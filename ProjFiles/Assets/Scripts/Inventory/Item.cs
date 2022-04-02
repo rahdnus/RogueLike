@@ -16,6 +16,7 @@ public abstract class Item
     public abstract void Use();
     public void Spawn(Vector3 position)
     {
+        Debug.Log("Spawn");
         GameObject.Instantiate(itemPrefab,position,Quaternion.identity);
     }
 }
