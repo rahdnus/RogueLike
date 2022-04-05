@@ -202,8 +202,9 @@ public class P_FallNeuron:NeuronState
     }
     public override void CHECK()
     {  
-         if(player.CheckGround(-0.5f))
+         if(player.CheckGround(0.2f))
         {
+            Debug.Log("i am falling");
            TRANSITION(-1);
         }
     }

@@ -34,7 +34,7 @@ public class Player : Actor
             {
                 if(falling==0)
                 {
-                    animator.Play("Run", 0);
+                    animator.CrossFade("Run",0.5f, 0);
                     atrest = false;
                 }
                    
@@ -46,7 +46,7 @@ public class Player : Actor
             {
                 if(falling==0)
                 {
-                    animator.Play("rest");
+                    animator.CrossFade("rest",0.5f,0);
                     atrest = true;
                 }
                    
@@ -83,7 +83,7 @@ public class Player : Actor
     public void Fall()
     {
         atrest=true;    
-        animator.CrossFade("Fall",1f,0);
+        animator.CrossFade("Fall",0.2f,0,0.3f);
     }
     public override void Dodge()
     {    
