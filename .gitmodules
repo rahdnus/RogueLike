@@ -1,0 +1,3 @@
+[submodule "ProjFiles/ProjFiles/Assets/Scripts/Cartographer"]
+	path = ProjFiles/ProjFiles/Assets/Scripts/Cartographer
+	url = https://github.com/rahdnus/Cargtographer.git
