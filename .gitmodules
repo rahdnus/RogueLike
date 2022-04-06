@@ -1,0 +1,3 @@
+[submodule "ProjFiles/Assets/Scripts/Cargtographer"]
+	path = ProjFiles/Assets/Scripts/Cargtographer
+	url = https://github.com/rahdnus/Cargtographer.git
