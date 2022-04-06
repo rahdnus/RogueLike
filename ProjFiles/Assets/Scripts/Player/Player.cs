@@ -16,13 +16,18 @@ public class Player : Actor
 
     public override void Start()
     {
+        base.Start();
+
+
         skill[0]=new ElementalDash
                     (this,Fireprefab,arm,true,0,
                     "ActivateSkill","Dash");
         skill[1]=new FireHand
                     (this,Fireprefab,arm,true,1,
                     "ActivateSkill","Launch"); 
-        base.Start();
+        //temp
+
+
     }    
     public override void Move(Vector3 axis,int falling)
     {

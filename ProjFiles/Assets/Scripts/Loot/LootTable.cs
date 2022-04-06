@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName="SO/LootTable",fileName="LootTable")]
+[CreateAssetMenu(menuName="SO/Table/LootTable",fileName="LootTable")]
 public class LootTable:ScriptableObject
 {
     [SerializeField]Loot[] loot;
