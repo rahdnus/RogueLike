@@ -8,7 +8,7 @@ public class InventoryView : MonoBehaviour
     [SerializeField]Inventory inventory;
     [SerializeField]Transform UiContainer;
     List<ItemView> UI_items=new List<ItemView>();
-    bool inventoryinFocus;
+    // bool inventoryinFocus;
     ItemView currentView;
 
     [SerializeField]GameObject UI_template;
@@ -16,7 +16,7 @@ public class InventoryView : MonoBehaviour
     void Start()
     {
         inventory.onAdd+=AddUI;
-        inventoryinFocus=true;
+        // inventoryinFocus=true;
 
     }
     void Update()
