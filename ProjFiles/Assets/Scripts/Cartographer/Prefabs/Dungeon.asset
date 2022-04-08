@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b052755acdcfe041bf302df6b636718, type: 3}
+  m_Name: Dungeon
+  m_EditorClassIdentifier: 
+  ArenaCellPrefabs:
+  - {fileID: 6627196405353166949, guid: 09008ffdbe24fe24f9693fbf382dc07c, type: 3}
+  - {fileID: 6627196405353166949, guid: c25e064ae2fba3e4eac70cc74289984b, type: 3}
+  CorridorCellPrefabs:
+  - {fileID: 6627196405353166949, guid: f64acbed13a6d4747b9aa6cbddf5a2b1, type: 3}
+  - {fileID: 6627196405353166949, guid: 655e3b0ddf15f2d4d92c244f1d2d4edc, type: 3}
+  StartCellPrefab: {fileID: 8642597311308531032, guid: 45848c90976a2b245a4f257107dfa2c5, type: 3}
+  EndCellPrefab: {fileID: 187199880170984225, guid: 5be4bc2d7b6388c48a640bcc0c3c9c54, type: 3}
