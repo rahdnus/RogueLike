@@ -339,8 +339,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1759870379}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51e90b37fe7164146a2ee1ab2ab2564b, type: 3}
+  m_Script: {fileID: 11500000, guid: e1d185a5f500eea4a9c5d2ddc68ebe3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   graphSeed: 1001
-  dungeonSO: {fileID: 11400000, guid: d47806f233f4d14449b17910e434c3fd, type: 2}
+  dungeonSO: {fileID: 11400000, guid: aa995bda9c7ae2b4789762875da8b492, type: 2}
