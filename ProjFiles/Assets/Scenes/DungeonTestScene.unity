@@ -335,17 +335,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 187199880170984226, guid: 10a845da8076eed4e9bfd6535302441f, type: 3}
   m_PrefabInstance: {fileID: 832128432}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &832128434 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3442703785328649717, guid: 10a845da8076eed4e9bfd6535302441f, type: 3}
-  m_PrefabInstance: {fileID: 832128432}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 459ce2cfaa2cf5d4a896118a46bf7cea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &841549413
 GameObject:
   m_ObjectHideFlags: 0
@@ -538,7 +527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1641737695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,7 +543,6 @@ MonoBehaviour:
   mycells:
   - {fileID: 361621333}
   - {fileID: 790483179}
-  temp: {fileID: 832128434}
 --- !u!4 &1641737696
 Transform:
   m_ObjectHideFlags: 0
@@ -588,7 +576,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1759870380
 Transform:
   m_ObjectHideFlags: 0
@@ -615,5 +603,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d185a5f500eea4a9c5d2ddc68ebe3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graphSeed: 12
+  graphSeed: 1001
   dungeonSO: {fileID: 11400000, guid: aa995bda9c7ae2b4789762875da8b492, type: 2}
