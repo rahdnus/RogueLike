@@ -603,5 +603,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d185a5f500eea4a9c5d2ddc68ebe3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graphSeed: 1001
+  graphSeed: 12
   dungeonSO: {fileID: 11400000, guid: aa995bda9c7ae2b4789762875da8b492, type: 2}

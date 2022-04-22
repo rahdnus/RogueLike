@@ -1,3 +1,6 @@
 [submodule "ProjFiles/Assets/Scripts/Cartographer"]
 	path = ProjFiles/Assets/Scripts/Cartographer
 	url = https://github.com/rahdnus/Cartographer.git
+[submodule "ProjFiles/Assets/Scripts/Hanabi"]
+	path = ProjFiles/Assets/Scripts/Hanabi
+	url = https://github.com/rahdnus/Hanabi.git
