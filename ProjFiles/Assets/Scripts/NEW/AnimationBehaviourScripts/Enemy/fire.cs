@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
+using UnityEngine;
+namespace Core{
+namespace Actor{namespace _Enemy{namespace States{
 public class fire : StateMachineBehaviour
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -16,3 +16,4 @@ public class fire : StateMachineBehaviour
             }
     }
 }
+}}}}

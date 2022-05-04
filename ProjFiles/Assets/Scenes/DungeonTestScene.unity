@@ -201,7 +201,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c2324ef99ce963148829fbed6eb0135e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -379,8 +379,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnclip:
-  - {fileID: 8300000, guid: 5520ab580d622c84eb23d2b446bd5711, type: 3}
-  - {fileID: 8300000, guid: 1c8e17d8f5d8bf248ba7cbc79ce7a810, type: 3}
+  - {fileID: 8300000, guid: da160fce637cd0742bfa6d61a734d019, type: 3}
+  - {fileID: 8300000, guid: ecf988e4bc7ce7644ade2277e7095c13, type: 3}
   pattern: {fileID: 11400000, guid: b579a0103dca1cc4f9532a7506e64484, type: 2}
   translator:
     stepCurve:
@@ -1680,12 +1680,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageClips:
-  - {fileID: 8300000, guid: db791457aff305146ad6d865e504d621, type: 3}
-  - {fileID: 8300000, guid: 3c1761f79223c1f47a3b83cdd2439c10, type: 3}
+  - {fileID: 8300000, guid: a5193f4f4ca7ec54194e656aa6ddd855, type: 3}
+  - {fileID: 8300000, guid: 5497730493a9f984f8894b75f91cbe9c, type: 3}
   jumpHeight:
+  - 90
   - 100
-  - 120
   groundcheck: {fileID: 483305687}
+  horizontal: 0
+  jump: 0
+  grounded: 0
+  j_count: 0
 --- !u!95 &2039431082
 Animator:
   serializedVersion: 3

@@ -1,15 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
-using Core.Actor;
-public class idle : StateMachineBehaviour
+namespace Core{
+namespace Actor{namespace _Enemy{namespace States{
+public class Idle : StateMachineBehaviour
 {
     [SerializeField] float radius=1.0f;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
        animator.transform.GetComponent<Pathfinding.AIPath>().canMove=true;
-       var player=FindObjectOfType(typeof(Controller)) as Controller;
+       var player=FindObjectOfType(typeof(Player)) as Player;
 
             float angle=Random.Range(45,135);
         float x=radius*Mathf.Cos(angle*Mathf.Deg2Rad);
@@ -30,3 +30,4 @@ public class idle : StateMachineBehaviour
         }
     }
 }
+}}}}

@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Core{
+namespace Actor{namespace _Player{namespace States{
 public class Damaged : StateMachineBehaviour
 {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -17,3 +19,4 @@ public class Damaged : StateMachineBehaviour
     }
 
 }
+}}}}
