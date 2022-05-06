@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace _Inventory{
+namespace Old._Inventory{
 public  class PickUpItem : MonoBehaviour
 {
     int id;
