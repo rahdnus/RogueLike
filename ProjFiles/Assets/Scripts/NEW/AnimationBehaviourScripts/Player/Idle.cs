@@ -65,7 +65,7 @@ public class Idle : StateMachineBehaviour
     {
         controller.jump=false;
         controller.j_count=0;
-
+        controller.horizontal=0;
     }
 
 }

@@ -1,10 +1,13 @@
 using UnityEngine;
+using TMPro;
 using Hanabi;
 namespace Core
 {
 namespace Actor{
 public class Player : MonoBehaviour,IDamagable
 {
+    [SerializeField]GameObject damagePrefab,canvas;
+    [SerializeField]int Health=100;
     [SerializeField]AudioClip[] damageClips;
     Rigidbody2D rb;
     [SerializeField] float[] jumpHeight;
@@ -27,10 +30,14 @@ public class Player : MonoBehaviour,IDamagable
         }
 
     }
-    public void TakeDamage()
+    public void TakeDamage(int damage)
     {
+        Health-=damage;
         rb.velocity=Vector2.zero;
-        // rb.AddForce(direction*200);
+        var damagefx=Instantiate(damagePrefab,transform.position,Quaternion.identity);
+        damagefx.transform.SetParent(canvas.transform);
+        damagefx.GetComponentInChildren<TextMeshProUGUI>().text=damage.ToString();
+        Destroy(damagefx,2f);
         int index=Random.Range(0,damageClips.Length);
         AudioSource.PlayClipAtPoint(damageClips[index],transform.position);
         GetComponent<Animator>().SetTrigger("Damaged");

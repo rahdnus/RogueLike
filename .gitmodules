@@ -4,3 +4,6 @@
 [submodule "ProjFiles/Assets/Scripts/Hanabi"]
 	path = ProjFiles/Assets/Scripts/Hanabi
 	url = https://github.com/rahdnus/Hanabi.git
+[submodule "ProjFiles/Assets/Scripts/DokkaebiBag"]
+	path = ProjFiles/Assets/Scripts/DokkaebiBag
+	url = https://github.com/rahdnus/DokkaebiBag.git
