@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Old._Inventory;
+namespace Old._Inventory{
+
 public class Inventory : MonoBehaviour
 {  
     // public List<Item> items;
@@ -50,4 +51,5 @@ public class Inventory : MonoBehaviour
         pickupitem.PickedUp();
     }
   
+}
 }

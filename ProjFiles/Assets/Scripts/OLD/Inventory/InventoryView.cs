@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Old._Inventory;
+
+namespace Old._Inventory{
 
 public class InventoryView : MonoBehaviour
 {
@@ -63,4 +64,5 @@ public class InventoryView : MonoBehaviour
         UI_items.Remove(view);
         inventory.RemoveItem(view.item);
     }
+}
 }

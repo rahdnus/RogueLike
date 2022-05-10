@@ -1,11 +1,12 @@
 using UnityEngine;
 using TMPro;
 using Hanabi;
-namespace Core
+using DokkaebiBag.Generic;
+
+namespace Core.Actor{
+public class Player : MonoBehaviour,IDamagable,IPick
 {
-namespace Actor{
-public class Player : MonoBehaviour,IDamagable
-{
+    public Inventory inventory=new Inventory();
     [SerializeField]GameObject damagePrefab,canvas;
     [SerializeField]int Health=100;
     [SerializeField]AudioClip[] damageClips;
@@ -19,7 +20,14 @@ public class Player : MonoBehaviour,IDamagable
     void Start()
     {
         rb=GetComponent<Rigidbody2D>();
+        inventory.Init();
     }   
+    void Update()
+    {
+        inventory.Click();
+        inventory.RightClick();
+
+    }
     void FixedUpdate()
     {
         rb.velocity= new Vector3(horizontal* 10f,rb.velocity.y,0);
@@ -29,6 +37,10 @@ public class Player : MonoBehaviour,IDamagable
             rb.AddForce(new Vector2(0,jumpHeight[j_count-1]));
         }
 
+    }
+    public void PickUp(Item.Data data)
+    {
+        inventory.AddToInventory(data);
     }
     public void TakeDamage(int damage)
     {
@@ -45,4 +57,4 @@ public class Player : MonoBehaviour,IDamagable
    
 }
 
-}}
+}
