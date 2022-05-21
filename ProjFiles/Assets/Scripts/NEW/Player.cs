@@ -23,8 +23,8 @@ public class Player : MonoBehaviour,IDamagable,IPick
 
     void Update()
     {
-        inventory.Click();
-        inventory.RightClick();
+        // inventory.Click();
+        // inventory.RightClick();
     }
 
     void FixedUpdate()
