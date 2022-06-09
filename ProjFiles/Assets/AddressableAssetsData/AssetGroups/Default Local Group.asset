@@ -17,24 +17,28 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 9ac15f0ccfcccfc499a9b5204b41cbf6
   m_SerializeEntries:
-  - m_GUID: 6e09160e76255a4499f671a1babf8b47
-    m_Address: Assets/TEMP
+  - m_GUID: 71eb53186dd0cd445994dda7c58dff5c
+    m_Address: Assets/Scripts/DokkaebiBag/src/Prefabs/Items/Capsule.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: e082fd27b2e300d4f906b227fab6ed7a
-    m_Address: Assets/TEMP/Circle.prefab
+  - m_GUID: bf6c80bdaf556904f9c95c48d4287e34
+    m_Address: Assets/Scripts/DokkaebiBag/src/Prefabs/UI/Capsule.png
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 8326f1cae3bc1a145a35ff7d3985826b
-    m_Address: Assets/TEMP/Circle.png
+  - m_GUID: a7454258a44857b48b588d5f136ac1bd
+    m_Address: Assets/Scripts/DokkaebiBag/src/Prefabs/Items/Circle.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 07352e91f98ef2048b5ce3add1751393
-    m_Address: Assets/TEMP/Square.png
+  - m_GUID: d237cf95d3149fc479ad98ac3f2ad598
+    m_Address: Assets/Scripts/DokkaebiBag/src/Prefabs/UI/Circle.png
     m_ReadOnly: 0
     m_SerializedLabels: []
-  - m_GUID: 74d90afd21b08b54ebeb76afcad3b417
-    m_Address: Assets/TEMP/Square.prefab
+  - m_GUID: 297f2427e7dd6494db2240c1f3e0021f
+    m_Address: Assets/Scripts/DokkaebiBag/src/Prefabs/Items/Cube.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 14543f4b06489b3449d1d4a09b3717cd
+    m_Address: Assets/Scripts/DokkaebiBag/src/Prefabs/UI/Square.png
     m_ReadOnly: 0
     m_SerializedLabels: []
   m_ReadOnly: 0
